@@ -1,0 +1,388 @@
+{% block body %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+		<meta http-equiv="refresh" content="5">
+    <title>GMRT-SERVO</title>
+</head>
+
+<style type="text/css">
+table {
+  border-spacing: 1;
+  border-collapse: collapse;
+  background: #e0e2e4;    <!--  #e0e2e4 table background clour-->
+  border-radius: 10px;
+  overflow: hidden;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  font: 400 16px "Courier New", "Courier New"; <!-- font style of table-->
+}
+table * {
+  position: relative;
+}
+table td,
+table th {
+  padding-left: 8px;
+}
+table thead tr {
+  height: 60px;
+  background: #ffed86;
+  font-size: 16px;
+}
+table tbody tr {
+  height: 40px;
+  border-bottom: 1px solid #e3f1d5;
+}
+table tbody tr:last-child {
+  border: 0;
+}
+table td,
+table th {
+  text-align: center;
+}
+table td.l,
+table th.l {
+  text-align: right;
+}
+table td.c,
+table th.c {
+  text-align: center;
+}
+table td.r,
+table th.r {
+  text-align: center;
+}
+
+@media screen and (max-width: 35.5em) {
+  table {
+    display: block;
+  }
+  table > *,
+table tr,
+table td,
+table th {
+    display: block;
+  }
+  table thead {
+    display: none;
+  }
+  table tbody tr {
+    height: auto;
+    padding: 8px 0;
+  }
+  table tbody tr td {
+    padding-left: 45%;
+    margin-bottom: 12px;
+  }
+  table tbody tr td:last-child {
+    margin-bottom: 0;
+  }
+  table tbody tr td:before {
+    position: absolute;
+    font-weight: 700;
+    width: 40%;
+    left: 10px;
+    top: 0;
+  }
+  table tbody tr td:nth-child(1):before {
+    content: "AZIMUTH";
+  }
+  table tbody tr td:nth-child(2):before {
+    content: "ELEVATION";
+  }
+  table tbody tr td:nth-child(3):before {
+    content: "ELEV";
+  }
+  table tbody tr td:nth-child(4):before {
+    content: "AZIM";
+  }
+  table tbody tr td:nth-child(5):before {
+    content: "GEN";
+  }
+}
+body {
+  background: #203647;   <!--    #77a8a8  , #618685, #203647  background colour main -->
+  font: 400 14px "Calibri", "Arial";
+  padding: 20px;
+}
+
+blockquote {
+  color: white;
+  text-align: center;
+  padding:200px;
+}
+
+h1 {
+  font-size: 30px;
+  color: yellow;  <!-- yellow -->
+  text-transform: uppercase;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+h3 {
+  color: white;
+  font-size: 20px;
+  font-weight: 100;
+  font-style: normal;
+  font-family: "Roboto", helvetica, arial, sans-serif;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+</style>
+<h1>Servo: {{dict1.HostName }} </h1>
+<h3><p><pre> DATE: {{dict1.date}},   Time:{{dict1.time }},    IST: {{dict1.IST }},   SYSTEM IP:{{dict1.systemIp }} </pre> </p></h3>    
+<table>
+      <thead>
+        <tr>
+               <th></th> 
+               <th>AZIMUTH</th>
+               <th></th> 
+               <th>ELEVATION</th>
+               <th></th> 
+               <th>ELEV</th>
+               <th>AZIM</th>
+               <th>SYSTEM</th>
+        </tr>
+      <thead>
+        
+<tbody>
+<tr>
+	    <th>encoder position</th>
+        <td> {{dict1.az_cp }}</td>
+        <th></th>
+        <td>{{dict1.el_cp }}</td>
+    <th> D </th>
+    <td> {% if dict1.el_enc== "1" %}
+					ENC
+				{% else %}
+					
+				{% endif %}</td>
+    <td> {% if dict1.az_enc== "1" %}
+					ENC
+				{% else %}
+					
+				{% endif %}</td>
+    <td> </td>
+</tr>
+        
+<tr>
+    <th>target position</th>
+        <td> {{dict1.az_tp }}</td>
+        <th></th>
+        <td> {{dict1.el_tp }}</td>
+       <th> I </th>
+	   <td>  {% if dict1.el_run == "1" %}
+	     RUN
+	   {% else %}
+        
+	   {% endif %} </td>
+	   
+	   <td>  {% if dict1.az_run == "1" %}
+	     RUN
+	   {% else %}
+        
+	   {% endif %} </td>
+	   
+	   <td> </td>
+</tr>
+       
+ <tr>
+        <th>pot position</th>
+         <td>  ?</td>
+         <th></th>
+         <td>  ?</td>
+         <th> G </th>
+        <td> {% if dict1.el_stp== "1" %}
+					STP
+				{% else %}
+					
+				{% endif %}</td>
+        <td> </td>
+        <td>{{dict1.slw}}</td>
+ </tr>
+  
+ <tr>
+         <th>motor current 1 (A)</th>
+       <td> {{dict1.az_motor1_current }}</td>
+       <th></th>
+       <td> {{dict1.el_motor1_current }}</td>
+         <th> I </th>
+         <td> {% if dict1.el_aol == "1" %}
+					AOL
+				{% else %}
+					
+				{% endif %} </td>
+	   
+	    <td>{% if dict1.az_aol == "1" %}
+					AOL
+				{% else %}
+					
+				{% endif %} </td>
+	   
+	   <td> {{dict1.mode }} </td>
+</tr>
+<tr>
+     <th>motor current 2 (A)</th>
+     <td> {{dict1.az_motor2_current }}</td>
+     <th></th>
+     <td> {{dict1.el_motor2_current }}</td>
+       <th> T </th>
+       <td> {% if dict1.el_str== "1" %}
+					STR
+				{% else %}
+					
+				{% endif %} </td>
+         <td>  </td>
+         <td> {{dict1.trk }}</td>
+ </tr>
+  
+ <tr>
+    <th>motor tacho 1 (rpm)</th>
+				<td> {{dict1.az_tacho1 }}</td>
+        <th></th>
+        <td> {{dict1.el_tacho1 }}</td>
+                           <th> A </th>
+     <td> {% if dict1.el_brk == "1" %}
+					BRK
+				{% else %}
+					
+				{% endif %} </td>
+	   
+	    <td>{% if dict1.az_brk == "1" %}
+					BRK
+				{% else %}
+					
+				{% endif %} </td>
+	   
+	   <td> {% if dict1.ssc == "1" %}
+					SSC
+				{% else %}
+					
+				{% endif %} </td>
+</tr>
+                        
+ <tr>
+         <th>motor tacho 2 (rpm)</th>
+       <td> {{dict1.az_tacho2 }}</td>
+       <th></th>
+       <td> {{dict1.el_tacho2 }}</td>
+                            <th> L </th>
+		<td> {% if dict1.el_dnp == "1" %}
+					DNP
+				{% else %}
+					
+				{% endif %} </td>
+	   
+	    <td>{% if dict1.az_ccp == "1" %}
+					CCP
+				{% else %}
+					
+				{% endif %} </td>
+	   
+	   <td> {{dict1.pos }}</td>
+ </tr>
+                         
+  <tr>
+      <th>wind (kmph) </th>
+     <td> {{dict1.wind_vel1 }}</td>
+     <th></th>
+     <td> {{dict1.wind_vel2 }}</td>
+       <td> </td>
+       <td> </td>
+       <td> </td>
+       <td> </td>
+ </tr>
+     
+ <tr>
+     <th></th>
+     <td> </td>
+     <th></th>
+     <td></td>
+     <th> S </th>
+	<td> {% if dict1.el_dnf == "1" %}
+					DNF
+				{% else %}
+					
+				{% endif %} </td>
+	   
+	    <td>{% if dict1.az_ccf == "1" %}
+					CCF
+				{% else %}
+					
+				{% endif %} </td>
+	   
+	   <td> {% if dict1.az_ac == "1" %}
+					acok
+				{% else %}
+					
+				{% endif %} </td>
+</tr>
+
+ <tr>
+     <th> </th>
+     <td> </td>
+     <th></th>
+     <td> </td>
+     <th> T </th>
+     <td> {% if dict1.el_upp== "1" %}
+					UPP
+				{% else %}
+					
+				{% endif %} </td>
+	 <td> {% if dict1.az_cpl== "1" %}
+					CP/CPL
+				{% else %}
+					
+				{% endif %} </td>
+	   
+	   <td> {% if dict1.az_cwr== "1" %}
+					CWR
+				{% else %}
+					
+				{% endif %} </td>
+       
+</tr>
+ <tr>
+      <th> </th>
+      <td> </td>
+      <th></th>
+      <td> </td>
+      <th> A </th>
+      <td> {% if dict1.el_upf== "1" %}
+					UPF
+				{% else %}
+					
+				{% endif %} </td>
+	  <td> {% if dict1.az_cfl== "1" %}
+					CF/CFL
+				{% else %}
+					
+				{% endif %} </td>
+	   
+	   <td>  </td>
+</tr>
+ <tr>
+      <th> </th>
+      <td> </td>
+      <th></th>
+      <td> </td>
+      <th> T </th>
+      <td> {% if dict1.el_std== "1" %}
+					STD
+				{% else %}
+					
+				{% endif %} </td>
+     <td> </td>
+     <td>  </td>
+</tr>
+       
+</tbody>
+</table>
+      
+<blockquote> Designed by Telemetry Lab @GMRT </blockquote>
+</html>
+{% endblock %}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<style>
+h4 { color: Blue; font-family: 'Droid serif', serif; font-size: 16px; font-weight: 400; font-style: italic; line-height: 44px; margin: 0 0 12px; text-align: left; }
+
+h1 {
+  font-family: "Trebuchet MS", sans-serif;
+  font-size: 1.5em;
+  letter-spacing: -2px;
+  border-bottom: 2px solid black;
+  text-transform: uppercase;
+ }
+
+</style>
+<head>
+<title>GMRT SERVO</title>
+<meta charset="UTF-8">
+<body bgcolor=" #FDF8F5">
+</head>
+<body>
+<form method="GET" action={{url_for('gmrtservo')}}>
+<h1>GMRT Servo parametrs monitoring web page</h1>
+	
+    	<h4> CENTRAL SQUARE ANTENNA:</h4>
+		<input type="radio" name="ant" value="c00">c00</input>
+		<input type="radio" name="ant" value="c01">c01</input>
+        <input type="radio" name="ant" value="c02">c02</input>
+        <input type="radio" name="ant" value="c03">c03</input>
+        <input type="radio" name="ant" value="c04">c04</input>
+        <input type="radio" name="ant" value="c05">c05</input>
+        <input type="radio" name="ant" value="c06">c06</input>
+        <input type="radio" name="ant" value="c08">c08</input>
+        <input type="radio" name="ant" value="c09">c09</input>
+        <input type="radio" name="ant" value="c10">c10</input>
+        <input type="radio" name="ant" value="c11">c11</input>
+        <input type="radio" name="ant" value="c12">c12</input>
+        <input type="radio" name="ant" value="c13">c13</input>
+        <input type="radio" name="ant" value="c14">c14</input>
+        <h4> EAST ARM ANTENNA:</h4>
+        <input type="radio" name="ant" value="e02">e02</input>
+        <input type="radio" name="ant" value="e03">e03</input>
+        <input type="radio" name="ant" value="e04">e04</input>
+        <input type="radio" name="ant" value="e05">e05</input>
+        <input type="radio" name="ant" value="e06">e06</input>
+        <h4> SOUTH ARM ANTENNA:</h4>
+        <input type="radio" name="ant" value="s01">s01</input>
+        <input type="radio" name="ant" value="s02">s02</input>
+        <input type="radio" name="ant" value="s03">s03</input>
+        <input type="radio" name="ant" value="s04">s04</input>
+        <input type="radio" name="ant" value="s06">s06</input>
+        <h4> WEST ARM ANTENNA:</h4>
+        <input type="radio" name="ant" value="w01">w01</input>
+        <input type="radio" name="ant" value="w02">w02</input>
+        <input type="radio" name="ant" value="w03">w03</input>
+        <input type="radio" name="ant" value="w04">w04</input>
+        <input type="radio" name="ant" value="w05">w05</input>
+        <input type="radio" name="ant" value="w06">w06</input>       
+        <p><br>
+        
+<input type="submit">
+</form>
+</body>
+</html>
