@@ -26,3 +26,4 @@ requests-unixsocket==0.2.0
 rsa==4.7.2
 simplejson==3.16.0
 Werkzeug==2.0.1
+tango
